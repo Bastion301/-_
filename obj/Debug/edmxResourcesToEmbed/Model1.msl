@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище MDKModelContainer" CdmEntityContainer="MDKEntities">
+    <EntitySetMapping Name="material">
+      <EntityTypeMapping TypeName="MDKModel.material">
+        <MappingFragment StoreEntitySet="material">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_type_material" ColumnName="id_type_material" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order">
+      <EntityTypeMapping TypeName="MDKModel.order">
+        <MappingFragment StoreEntitySet="order">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_status_order" ColumnName="id_status_order" />
+          <ScalarProperty Name="id_partner" ColumnName="id_partner" />
+          <ScalarProperty Name="id_manager" ColumnName="id_manager" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="prepayment_date" ColumnName="prepayment_date" />
+          <ScalarProperty Name="cancel_reason" ColumnName="cancel_reason" />
+          <ScalarProperty Name="prepayment_amount" ColumnName="prepayment_amount" />
+          <ScalarProperty Name="full_payment_date" ColumnName="full_payment_date" />
+          <ScalarProperty Name="completion_date" ColumnName="completion_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="partner_products_request_">
+      <EntityTypeMapping TypeName="MDKModel.partner_products_request_">
+        <MappingFragment StoreEntitySet="partner_products_request$">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="name_partner" ColumnName="name_partner" />
+          <ScalarProperty Name="count" ColumnName="count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="partner_rating_history">
+      <EntityTypeMapping TypeName="MDKModel.partner_rating_history">
+        <MappingFragment StoreEntitySet="partner_rating_history">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_partner" ColumnName="id_partner" />
+          <ScalarProperty Name="old_rating" ColumnName="old_rating" />
+          <ScalarProperty Name="new_rating" ColumnName="new_rating" />
+          <ScalarProperty Name="change_date" ColumnName="change_date" />
+          <ScalarProperty Name="changed_by_manager" ColumnName="changed_by_manager" />
+          <ScalarProperty Name="reason" ColumnName="reason" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="partners_">
+      <EntityTypeMapping TypeName="MDKModel.partners_">
+        <MappingFragment StoreEntitySet="partners$">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="type_partner" ColumnName="type_partner" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="director" ColumnName="director" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="adress" ColumnName="adress" />
+          <ScalarProperty Name="inn" ColumnName="inn" />
+          <ScalarProperty Name="reiting" ColumnName="reiting" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products_">
+      <EntityTypeMapping TypeName="MDKModel.products_">
+        <MappingFragment StoreEntitySet="products$">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_type_product" ColumnName="id_type_product" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Артикул" ColumnName="Артикул" />
+          <ScalarProperty Name="Минимальная_стоимость_для_партнера" ColumnName="Минимальная стоимость для партнера" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="role">
+      <EntityTypeMapping TypeName="MDKModel.role">
+        <MappingFragment StoreEntitySet="role">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="status_order">
+      <EntityTypeMapping TypeName="MDKModel.status_order">
+        <MappingFragment StoreEntitySet="status_order">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="status_structure_order">
+      <EntityTypeMapping TypeName="MDKModel.status_structure_order">
+        <MappingFragment StoreEntitySet="status_structure_order">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="structure_order">
+      <EntityTypeMapping TypeName="MDKModel.structure_order">
+        <MappingFragment StoreEntitySet="structure_order">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_order" ColumnName="id_order" />
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="agreed_price" ColumnName="agreed_price" />
+          <ScalarProperty Name="production_date" ColumnName="production_date" />
+          <ScalarProperty Name="id_status_structure_order" ColumnName="id_status_structure_order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="suppliers">
+      <EntityTypeMapping TypeName="MDKModel.suppliers">
+        <MappingFragment StoreEntitySet="suppliers">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_type_partner" ColumnName="id_type_partner" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="suppliers_material">
+      <EntityTypeMapping TypeName="MDKModel.suppliers_material">
+        <MappingFragment StoreEntitySet="suppliers_material">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_suppliers" ColumnName="id_suppliers" />
+          <ScalarProperty Name="id_material" ColumnName="id_material" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="MDKModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="type_material_">
+      <EntityTypeMapping TypeName="MDKModel.type_material_">
+        <MappingFragment StoreEntitySet="type_material$">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="procent" ColumnName="procent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="type_partner_">
+      <EntityTypeMapping TypeName="MDKModel.type_partner_">
+        <MappingFragment StoreEntitySet="type_partner$">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="type_product_">
+      <EntityTypeMapping TypeName="MDKModel.type_product_">
+        <MappingFragment StoreEntitySet="type_product$">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="coefficient" ColumnName="coefficient" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="type_suppliers">
+      <EntityTypeMapping TypeName="MDKModel.type_suppliers">
+        <MappingFragment StoreEntitySet="type_suppliers">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="MDKModel.users">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_role" ColumnName="id_role" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,444 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище MDKModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="material">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_type_material" Type="int" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_status_order" Type="int" />
+    <Property Name="id_partner" Type="int" />
+    <Property Name="id_manager" Type="int" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="prepayment_date" Type="datetime" />
+    <Property Name="cancel_reason" Type="nvarchar" MaxLength="50" />
+    <Property Name="prepayment_amount" Type="float" />
+    <Property Name="full_payment_date" Type="datetime" />
+    <Property Name="completion_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="partner_products_request$">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_product" Type="int" />
+    <Property Name="name_partner" Type="int" />
+    <Property Name="count" Type="float" />
+  </EntityType>
+  <EntityType Name="partner_rating_history">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_partner" Type="int" />
+    <Property Name="old_rating" Type="float" />
+    <Property Name="new_rating" Type="float" />
+    <Property Name="change_date" Type="datetime" />
+    <Property Name="changed_by_manager" Type="int" />
+    <Property Name="reason" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="partners$">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="type_partner" Type="int" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+    <Property Name="director" Type="nvarchar" MaxLength="255" />
+    <Property Name="email" Type="nvarchar" MaxLength="255" />
+    <Property Name="phone" Type="nvarchar" MaxLength="255" />
+    <Property Name="adress" Type="nvarchar" MaxLength="255" />
+    <Property Name="inn" Type="float" />
+    <Property Name="reiting" Type="float" />
+  </EntityType>
+  <EntityType Name="products$">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_type_product" Type="int" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Артикул" Type="float" />
+    <Property Name="Минимальная стоимость для партнера" Type="float" />
+  </EntityType>
+  <EntityType Name="role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="status_order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="status_structure_order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="structure_order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_order" Type="int" />
+    <Property Name="id_product" Type="int" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="agreed_price" Type="float" />
+    <Property Name="production_date" Type="datetime" />
+    <Property Name="id_status_structure_order" Type="int" />
+  </EntityType>
+  <EntityType Name="suppliers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_type_partner" Type="int" />
+  </EntityType>
+  <EntityType Name="suppliers_material">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_suppliers" Type="int" />
+    <Property Name="id_material" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="type_material$">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+    <Property Name="procent" Type="float" />
+  </EntityType>
+  <EntityType Name="type_partner$">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="type_product$">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+    <Property Name="coefficient" Type="float" />
+  </EntityType>
+  <EntityType Name="type_suppliers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_role" Type="int" />
+    <Property Name="login" Type="nvarchar" MaxLength="50" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_material_type_material$">
+    <End Role="type_material$" Type="Self.type_material$" Multiplicity="0..1" />
+    <End Role="material" Type="Self.material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="type_material$">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="material">
+        <PropertyRef Name="id_type_material" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_partners$">
+    <End Role="partners$" Type="Self.partners$" Multiplicity="0..1" />
+    <End Role="order" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="partners$">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="id_partner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_status_order">
+    <End Role="status_order" Type="Self.status_order" Multiplicity="0..1" />
+    <End Role="order" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="status_order">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="id_status_order" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_users">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="order" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="id_manager" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_partner_products_request$_partners$">
+    <End Role="partners$" Type="Self.partners$" Multiplicity="0..1" />
+    <End Role="partner_products_request$" Type="Self.partner_products_request$" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="partners$">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="partner_products_request$">
+        <PropertyRef Name="name_partner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_partner_products_request$_products$">
+    <End Role="products$" Type="Self.products$" Multiplicity="0..1" />
+    <End Role="partner_products_request$" Type="Self.partner_products_request$" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products$">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="partner_products_request$">
+        <PropertyRef Name="id_product" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_partner_rating_history_partners$">
+    <End Role="partners$" Type="Self.partners$" Multiplicity="0..1" />
+    <End Role="partner_rating_history" Type="Self.partner_rating_history" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="partners$">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="partner_rating_history">
+        <PropertyRef Name="id_partner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_partner_rating_history_users">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="partner_rating_history" Type="Self.partner_rating_history" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="partner_rating_history">
+        <PropertyRef Name="changed_by_manager" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_partners$_type_partner$">
+    <End Role="type_partner$" Type="Self.type_partner$" Multiplicity="0..1" />
+    <End Role="partners$" Type="Self.partners$" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="type_partner$">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="partners$">
+        <PropertyRef Name="type_partner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_products$_type_product$">
+    <End Role="type_product$" Type="Self.type_product$" Multiplicity="0..1" />
+    <End Role="products$" Type="Self.products$" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="type_product$">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="products$">
+        <PropertyRef Name="id_type_product" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_structure_order_order">
+    <End Role="order" Type="Self.order" Multiplicity="0..1" />
+    <End Role="structure_order" Type="Self.structure_order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="structure_order">
+        <PropertyRef Name="id_order" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_structure_order_status_structure_order">
+    <End Role="status_structure_order" Type="Self.status_structure_order" Multiplicity="0..1" />
+    <End Role="structure_order" Type="Self.structure_order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="status_structure_order">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="structure_order">
+        <PropertyRef Name="id_status_structure_order" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_suppliers_material_material">
+    <End Role="material" Type="Self.material" Multiplicity="0..1" />
+    <End Role="suppliers_material" Type="Self.suppliers_material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="material">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="suppliers_material">
+        <PropertyRef Name="id_material" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_suppliers_material_suppliers">
+    <End Role="suppliers" Type="Self.suppliers" Multiplicity="0..1" />
+    <End Role="suppliers_material" Type="Self.suppliers_material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="suppliers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="suppliers_material">
+        <PropertyRef Name="id_suppliers" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_suppliers_type_suppliers">
+    <End Role="type_suppliers" Type="Self.type_suppliers" Multiplicity="0..1" />
+    <End Role="suppliers" Type="Self.suppliers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="type_suppliers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="suppliers">
+        <PropertyRef Name="id_type_partner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_users_role">
+    <End Role="role" Type="Self.role" Multiplicity="0..1" />
+    <End Role="users" Type="Self.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="id_role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище MDKModelContainer">
+    <EntitySet Name="material" EntityType="Self.material" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="order" EntityType="Self.order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="partner_products_request$" EntityType="Self.partner_products_request$" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="partner_rating_history" EntityType="Self.partner_rating_history" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="partners$" EntityType="Self.partners$" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="products$" EntityType="Self.products$" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="role" EntityType="Self.role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="status_order" EntityType="Self.status_order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="status_structure_order" EntityType="Self.status_structure_order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="structure_order" EntityType="Self.structure_order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="suppliers" EntityType="Self.suppliers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="suppliers_material" EntityType="Self.suppliers_material" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="type_material$" EntityType="Self.type_material$" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="type_partner$" EntityType="Self.type_partner$" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="type_product$" EntityType="Self.type_product$" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="type_suppliers" EntityType="Self.type_suppliers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_material_type_material$" Association="Self.FK_material_type_material$">
+      <End Role="type_material$" EntitySet="type_material$" />
+      <End Role="material" EntitySet="material" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_partners$" Association="Self.FK_order_partners$">
+      <End Role="partners$" EntitySet="partners$" />
+      <End Role="order" EntitySet="order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_status_order" Association="Self.FK_order_status_order">
+      <End Role="status_order" EntitySet="status_order" />
+      <End Role="order" EntitySet="order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_users" Association="Self.FK_order_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="order" EntitySet="order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_partner_products_request$_partners$" Association="Self.FK_partner_products_request$_partners$">
+      <End Role="partners$" EntitySet="partners$" />
+      <End Role="partner_products_request$" EntitySet="partner_products_request$" />
+    </AssociationSet>
+    <AssociationSet Name="FK_partner_products_request$_products$" Association="Self.FK_partner_products_request$_products$">
+      <End Role="products$" EntitySet="products$" />
+      <End Role="partner_products_request$" EntitySet="partner_products_request$" />
+    </AssociationSet>
+    <AssociationSet Name="FK_partner_rating_history_partners$" Association="Self.FK_partner_rating_history_partners$">
+      <End Role="partners$" EntitySet="partners$" />
+      <End Role="partner_rating_history" EntitySet="partner_rating_history" />
+    </AssociationSet>
+    <AssociationSet Name="FK_partner_rating_history_users" Association="Self.FK_partner_rating_history_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="partner_rating_history" EntitySet="partner_rating_history" />
+    </AssociationSet>
+    <AssociationSet Name="FK_partners$_type_partner$" Association="Self.FK_partners$_type_partner$">
+      <End Role="type_partner$" EntitySet="type_partner$" />
+      <End Role="partners$" EntitySet="partners$" />
+    </AssociationSet>
+    <AssociationSet Name="FK_products$_type_product$" Association="Self.FK_products$_type_product$">
+      <End Role="type_product$" EntitySet="type_product$" />
+      <End Role="products$" EntitySet="products$" />
+    </AssociationSet>
+    <AssociationSet Name="FK_structure_order_order" Association="Self.FK_structure_order_order">
+      <End Role="order" EntitySet="order" />
+      <End Role="structure_order" EntitySet="structure_order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_structure_order_status_structure_order" Association="Self.FK_structure_order_status_structure_order">
+      <End Role="status_structure_order" EntitySet="status_structure_order" />
+      <End Role="structure_order" EntitySet="structure_order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_suppliers_material_material" Association="Self.FK_suppliers_material_material">
+      <End Role="material" EntitySet="material" />
+      <End Role="suppliers_material" EntitySet="suppliers_material" />
+    </AssociationSet>
+    <AssociationSet Name="FK_suppliers_material_suppliers" Association="Self.FK_suppliers_material_suppliers">
+      <End Role="suppliers" EntitySet="suppliers" />
+      <End Role="suppliers_material" EntitySet="suppliers_material" />
+    </AssociationSet>
+    <AssociationSet Name="FK_suppliers_type_suppliers" Association="Self.FK_suppliers_type_suppliers">
+      <End Role="type_suppliers" EntitySet="type_suppliers" />
+      <End Role="suppliers" EntitySet="suppliers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_users_role" Association="Self.FK_users_role">
+      <End Role="role" EntitySet="role" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
