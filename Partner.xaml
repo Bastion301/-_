@@ -1,0 +1,269 @@
+﻿<Window x:Class="MDK.Partner"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MDK"
+        mc:Ignorable="d"
+        Title="Панель партнера" Height="1146" Width="900"
+        WindowStartupLocation="CenterScreen"
+        Background="White">
+
+    <Window.Resources>
+        <Style x:Key="SecondaryBackground" TargetType="Border">
+            <Setter Property="Background" Value="#BBDCFA"/>
+        </Style>
+
+        <Style x:Key="ExitButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#0C4882"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontFamily" Value="Bahnschrift Light SemiCondensed"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#0C4882"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#EAF4FF"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="HeaderText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Bahnschrift Light SemiCondensed"/>
+            <Setter Property="Foreground" Value="#0C4882"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+
+        <Style x:Key="NormalText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Bahnschrift Light SemiCondensed"/>
+            <Setter Property="Margin" Value="0,4,0,4"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+
+        <Style x:Key="BoldText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Bahnschrift Light SemiCondensed"/>
+            <Setter Property="Margin" Value="0,4,0,4"/>
+        </Style>
+
+        <Style x:Key="AccentButton" TargetType="Button">
+            <Setter Property="Background" Value="#0C4882"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontFamily" Value="Bahnschrift Light SemiCondensed"/>
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="Margin" Value="0,0,8,0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="4"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#0A3A6A"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ProductItemBorder" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#BBDCFA"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="Margin" Value="12,6,12,6"/>
+            <Setter Property="Padding" Value="16"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="6" ShadowDepth="2" Opacity="0.15" Direction="270"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="FontFamily" Value="Bahnschrift Light SemiCondensed"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+            <Setter Property="Padding" Value="6,4"/>
+            <Setter Property="BorderBrush" Value="#BBDCFA"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Bahnschrift Light SemiCondensed"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="6,4"/>
+            <Setter Property="BorderBrush" Value="#BBDCFA"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="White"/>
+        </Style>
+
+        <Style TargetType="ListView">
+            <Setter Property="FontFamily" Value="Bahnschrift Light SemiCondensed"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+
+        <Style TargetType="GridViewColumnHeader">
+            <Setter Property="FontFamily" Value="Bahnschrift Light SemiCondensed"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Background" Value="#F0F8FF"/>
+            <Setter Property="Padding" Value="8,6"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <Border Grid.Row="0" Style="{StaticResource SecondaryBackground}" Padding="20,15">
+            <Grid>
+                <TextBlock Text="Вы зашли как партнер" Style="{StaticResource HeaderText}" HorizontalAlignment="Center"/>
+                <Button x:Name="BtnExit" Content="Выход" Style="{StaticResource ExitButton}" HorizontalAlignment="Right"
+                        Click="BtnExit_Click"/>
+            </Grid>
+        </Border>
+
+        <!-- Контент -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="0,10,0,10">
+            <StackPanel>
+                <!-- Информация о партнёре -->
+                <Border Style="{StaticResource ProductItemBorder}">
+                    <StackPanel>
+                        <TextBlock x:Name="TbPartnerInfo" Style="{StaticResource HeaderText}" Margin="0,0,0,8"/>
+                        <TextBlock x:Name="TbPartnerContact" Style="{StaticResource NormalText}"/>
+                        <TextBlock x:Name="TbPartnerRating" Style="{StaticResource NormalText}"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Каталог продукции -->
+                <Border Style="{StaticResource ProductItemBorder}">
+                    <StackPanel>
+                        <TextBlock Text="Доступная продукция" Style="{StaticResource HeaderText}"/>
+                        <ComboBox x:Name="CbProductTypes" SelectionChanged="CbProductTypes_SelectionChanged">
+                            <ComboBoxItem Content="вся продукция" IsSelected="True"/>
+                        </ComboBox>
+                        <ListView x:Name="LvProducts" Height="150">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Название" Width="300" DisplayMemberBinding="{Binding Name}"/>
+                                    <GridViewColumn Header="Тип" Width="150" DisplayMemberBinding="{Binding TypeName}"/>
+                                    <GridViewColumn Header="Стоимость" Width="100" DisplayMemberBinding="{Binding MinPartnerPrice, StringFormat={}{0:N2} ₽}"/>
+                                    <GridViewColumn Header="Артикул" Width="80" DisplayMemberBinding="{Binding Article}"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </StackPanel>
+                </Border>
+
+                <!-- Добавить в заявку -->
+                <Border Style="{StaticResource ProductItemBorder}">
+                    <StackPanel>
+                        <TextBlock Text="Добавить продукты в заявку" Style="{StaticResource HeaderText}"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="TbSelectedProduct" Text="Список продуктов" Style="{StaticResource NormalText}" VerticalAlignment="Center"/>
+                            <TextBox x:Name="TbQuantity" Text="1" TextAlignment="Center" Grid.Column="1"/>
+                            <Button x:Name="BtnAddToRequest" Content="Добавить" Style="{StaticResource AccentButton}" Grid.Column="2" Click="BtnAddToRequest_Click"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <!-- Текущая заявка -->
+                <Border Style="{StaticResource ProductItemBorder}">
+                    <StackPanel>
+                        <Grid>
+                            <TextBlock Text="ЗАЯВКА" Style="{StaticResource HeaderText}"/>
+                            <TextBlock x:Name="TbTotalCost" Text="Итого: 0,00 ₽" Style="{StaticResource HeaderText}" HorizontalAlignment="Right"/>
+                        </Grid>
+                        <ListView x:Name="LvCurrentRequest" Height="120">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Продукт" Width="250" DisplayMemberBinding="{Binding ProductName}"/>
+                                    <GridViewColumn Header="Количество" Width="80" DisplayMemberBinding="{Binding Quantity}"/>
+                                    <GridViewColumn Header="Цена" Width="100" DisplayMemberBinding="{Binding Price, StringFormat={}{0:N2} ₽}"/>
+                                    <GridViewColumn Header="Сумма" Width="120" DisplayMemberBinding="{Binding Total, StringFormat={}{0:N2} ₽}"/>
+                                    <GridViewColumn Header="Действия" Width="80">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Content="Удалить" Style="{StaticResource AccentButton}" Padding="5,2" Click="BtnRemoveItem_Click"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </StackPanel>
+                </Border>
+
+                <!-- Мои заказы -->
+                <Border Style="{StaticResource ProductItemBorder}">
+                    <StackPanel>
+                        <TextBlock Text="Мои заказы" Style="{StaticResource HeaderText}" Margin="0,0,0,10"/>
+                        <ListView x:Name="LvMyOrders" Height="150">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="№ Заказа" Width="80" DisplayMemberBinding="{Binding Id}"/>
+                                    <GridViewColumn Header="Дата" Width="100" DisplayMemberBinding="{Binding CreatedDate, StringFormat={}{0:dd.MM.yyyy}}"/>
+                                    <GridViewColumn Header="Статус" Width="150" DisplayMemberBinding="{Binding Status}"/>
+                                    <GridViewColumn Header="Сумма" Width="100" DisplayMemberBinding="{Binding TotalCost, StringFormat={}{0:N2} ₽}"/>
+                                    <GridViewColumn Header="Действия" Width="300">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Content="Отменить" Style="{StaticResource ExitButton}" Padding="5,2" Margin="2" Click="BtnCancelOrder_Click"/>
+                                                    <Button Content="Внести предоплату" Style="{StaticResource AccentButton}" Padding="5,2" Margin="2" Click="BtnPayPrepayment_Click"/>
+                                                    <Button Content="Детали" Style="{StaticResource AccentButton}" Padding="5,2" Margin="2" Click="BtnOrderDetails_Click"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Панель действий -->
+        <Border Grid.Row="2" Style="{StaticResource SecondaryBackground}" Padding="12">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="BtnSubmitRequest" Content="Отправить заявку" Style="{StaticResource AccentButton}" Click="BtnSubmitRequest_Click"/>
+                <Button x:Name="BtnClearRequest" Content="Очистить заявку" Style="{StaticResource AccentButton}" Click="BtnClearRequest_Click"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

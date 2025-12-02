@@ -1,0 +1,120 @@
+﻿<Window x:Class="MDK.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Авторизация - Новые технологии" Height="368" Width="400"
+        WindowStartupLocation="CenterScreen"
+        Background="White"
+        ResizeMode="NoResize" Icon="/Новые технологии.png">
+
+    <Window.Resources>
+        <Style x:Key="SecondaryBackground" TargetType="Border">
+            <Setter Property="Background" Value="#BBDCFA"/>
+        </Style>
+
+        <Style x:Key="LoginBorder" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#BBDCFA"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="30"/>
+            <Setter Property="Margin" Value="20"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="12" ShadowDepth="4" Opacity="0.2"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="HeaderText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Bahnschrift Light SemiCondensed"/>
+            <Setter Property="Foreground" Value="#0C4882"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="SubHeaderText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Bahnschrift Light SemiCondensed"/>
+            <Setter Property="Foreground" Value="#666666"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,5,0,0"/>
+        </Style>
+
+        <Style x:Key="LabelText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontFamily" Value="Bahnschrift Light SemiCondensed"/>
+            <Setter Property="Foreground" Value="#0C4882"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,0,0,5"/>
+        </Style>
+
+        <Style x:Key="InputTextBox" TargetType="TextBox">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Bahnschrift Light SemiCondensed"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#BBDCFA"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Height" Value="40"/>
+        </Style>
+
+        <Style x:Key="InputPasswordBox" BasedOn="{StaticResource InputTextBox}" TargetType="PasswordBox">
+        </Style>
+
+        <Style x:Key="AccentButton" TargetType="Button">
+            <Setter Property="Background" Value="#0C4882"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Bahnschrift Light SemiCondensed"/>
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="6" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#0A3A6A"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Border Style="{StaticResource SecondaryBackground}">
+            <Border Style="{StaticResource LoginBorder}">
+                <StackPanel>
+                    <!-- Логотип и заголовки -->
+                    <StackPanel Margin="0,0,0,30">
+                        <TextBlock Text="Авторизация" Style="{StaticResource SubHeaderText}"/>
+                    </StackPanel>
+
+                    <!-- Поля ввода -->
+                    <StackPanel>
+                        <TextBlock Text="Логин" Style="{StaticResource LabelText}"/>
+                        <TextBox x:Name="TB_Login" Style="{StaticResource InputTextBox}"/>
+                        <TextBlock Text="Пароль" Style="{StaticResource LabelText}"/>
+                        <PasswordBox x:Name="TB_Password" Height="17"/>
+
+                        <Button x:Name="BTN_Auth" Content="Войти в систему" Style="{StaticResource AccentButton}" Click="BTN_Auth_Click" Margin="0,30,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Border>
+    </Grid>
+</Window>

@@ -1,0 +1,220 @@
+﻿<Window x:Class="MDK.editUser"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MDK"
+        mc:Ignorable="d"
+        Title="Редактирование профиля" Height="600" Width="700"
+        WindowStartupLocation="CenterScreen"
+        Background="White">
+
+    <Window.Resources>
+        <Style x:Key="HeaderText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Bahnschrift Light SemiCondensed"/>
+            <Setter Property="Foreground" Value="#0C4882"/>
+            <Setter Property="Margin" Value="0,0,0,15"/>
+        </Style>
+
+        <Style x:Key="NormalText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Bahnschrift Light SemiCondensed"/>
+            <Setter Property="Margin" Value="0,4,0,4"/>
+        </Style>
+
+        <Style x:Key="BoldText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Bahnschrift Light SemiCondensed"/>
+            <Setter Property="Margin" Value="0,4,0,4"/>
+            <Setter Property="Foreground" Value="#0C4882"/>
+        </Style>
+
+        <Style x:Key="AccentButton" TargetType="Button">
+            <Setter Property="Background" Value="#0C4882"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Bahnschrift Light SemiCondensed"/>
+            <Setter Property="Padding" Value="15,8"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="4" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#0A3A6A"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="InputTextBox" TargetType="TextBox">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Bahnschrift Light SemiCondensed"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="Margin" Value="0,4,0,4"/>
+            <Setter Property="BorderBrush" Value="#BBDCFA"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="White"/>
+        </Style>
+
+        <Style x:Key="InputComboBox" TargetType="ComboBox">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Bahnschrift Light SemiCondensed"/>
+            <Setter Property="Padding" Value="6,4"/>
+            <Setter Property="Margin" Value="0,4,0,4"/>
+            <Setter Property="BorderBrush" Value="#BBDCFA"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="White"/>
+        </Style>
+
+        <Style x:Key="SectionHeader" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Bahnschrift Light SemiCondensed"/>
+            <Setter Property="Foreground" Value="#0C4882"/>
+            <Setter Property="Margin" Value="0,20,0,10"/>
+        </Style>
+
+        <Style x:Key="EditableSectionBorder" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#BBDCFA"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="Padding" Value="16"/>
+            <Setter Property="Margin" Value="12,6,12,12"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="6" ShadowDepth="2" Opacity="0.15" Direction="270"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <Border Grid.Row="0" Background="#BBDCFA" Padding="20,15">
+            <TextBlock x:Name="TbTitle"
+                      Text="Редактирование профиля"
+                      Style="{StaticResource HeaderText}"
+                      HorizontalAlignment="Center"/>
+        </Border>
+
+        <!-- Основной контент -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="0,10,0,10">
+            <StackPanel>
+                <!-- Для пользователя -->
+                <Border x:Name="UserPanel" Style="{StaticResource EditableSectionBorder}">
+                    <StackPanel>
+                        <TextBlock Text="Данные пользователя" Style="{StaticResource HeaderText}"/>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="Логин:" Style="{StaticResource BoldText}"/>
+                                <TextBox x:Name="TbLogin" Style="{StaticResource InputTextBox}"/>
+
+                                <TextBlock Text="Пароль:" Style="{StaticResource BoldText}" Margin="0,10,0,0"/>
+                                <TextBox x:Name="TbPassword" Style="{StaticResource InputTextBox}"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1" Margin="10,58,0,10">
+                                <TextBlock Text="Роль:" Style="{StaticResource BoldText}"/>
+                                <ComboBox x:Name="CbRole" Style="{StaticResource InputComboBox}" DisplayMemberPath="name"/>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <!-- Для партнера -->
+                <Border x:Name="PartnerPanel" Style="{StaticResource EditableSectionBorder}" Visibility="Collapsed">
+                    <StackPanel>
+                        <TextBlock Text="Данные партнера" Style="{StaticResource HeaderText}"/>
+
+                        <!-- Основная информация -->
+                        <TextBlock Text="Основная информация" Style="{StaticResource SectionHeader}"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="Название компании:" Style="{StaticResource BoldText}"/>
+                                <TextBox x:Name="TbCompanyName" Style="{StaticResource InputTextBox}"/>
+
+                                <TextBlock Text="Директор:" Style="{StaticResource BoldText}" Margin="0,10,0,0"/>
+                                <TextBox x:Name="TbDirector" Style="{StaticResource InputTextBox}"/>
+
+                                <TextBlock Text="ИНН:" Style="{StaticResource BoldText}" Margin="0,10,0,0"/>
+                                <TextBox x:Name="TbInn" Style="{StaticResource InputTextBox}"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                                <TextBlock Text="Тип партнера:" Style="{StaticResource BoldText}"/>
+                                <ComboBox x:Name="CbPartnerType" Style="{StaticResource InputComboBox}" DisplayMemberPath="name"/>
+
+                                <TextBlock Text="Рейтинг:" Style="{StaticResource BoldText}" Margin="0,10,0,0"/>
+                                <TextBox x:Name="TbRating" Style="{StaticResource InputTextBox}"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <!-- Контактная информация -->
+                        <TextBlock Text="Контактная информация" Style="{StaticResource SectionHeader}"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="Email:" Style="{StaticResource BoldText}"/>
+                                <TextBox x:Name="TbEmail" Style="{StaticResource InputTextBox}"/>
+
+                                <TextBlock Text="Телефон:" Style="{StaticResource BoldText}" Margin="0,10,0,0"/>
+                                <TextBox x:Name="TbPhone" Style="{StaticResource InputTextBox}"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                                <TextBlock Text="Юридический адрес:" Style="{StaticResource BoldText}"/>
+                                <TextBox x:Name="TbAddress" Style="{StaticResource InputTextBox}" Height="60" TextWrapping="Wrap" AcceptsReturn="True"/>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Панель действий -->
+        <Border Grid.Row="2" Background="#BBDCFA" Padding="12">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="BtnSave"
+                       Content="Сохранить"
+                       Style="{StaticResource AccentButton}"
+                       Click="BtnSave_Click"/>
+                <Button x:Name="BtnCancel"
+                       Content="Отмена"
+                       Style="{StaticResource AccentButton}"
+                       Click="BtnCancel_Click"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

@@ -1,0 +1,122 @@
+﻿<Window x:Class="MDK.Order"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MDK"
+        mc:Ignorable="d"
+        Title="Состав заказа" Height="500" Width="900"
+        WindowStartupLocation="CenterScreen"
+        Background="White">
+
+    <Window.Resources>
+        <!-- Заголовок -->
+        <Style x:Key="HeaderText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Bahnschrift Light SemiCondensed"/>
+            <Setter Property="Foreground" Value="#0C4882"/>
+        </Style>
+
+        <!-- Обычный текст -->
+        <Style x:Key="NormalText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Bahnschrift Light SemiCondensed"/>
+            <Setter Property="Margin" Value="0,4,0,4"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+
+        <!-- Жирный текст -->
+        <Style x:Key="BoldText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Bahnschrift Light SemiCondensed"/>
+            <Setter Property="Margin" Value="0,4,0,4"/>
+        </Style>
+
+        <!-- Стиль карточки -->
+        <Style x:Key="ItemBorder" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#BBDCFA"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="Margin" Value="12,6,12,6"/>
+            <Setter Property="Padding" Value="16"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="6" ShadowDepth="2" Opacity="0.15" Direction="270"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Стиль ListView -->
+        <Style TargetType="ListView">
+            <Setter Property="FontFamily" Value="Bahnschrift Light SemiCondensed"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+
+        <Style TargetType="GridViewColumnHeader">
+            <Setter Property="FontFamily" Value="Bahnschrift Light SemiCondensed"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Background" Value="#F0F8FF"/>
+            <Setter Property="Padding" Value="8,6"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <Border Grid.Row="0" Background="#BBDCFA" Padding="20,15">
+            <TextBlock x:Name="TbOrderTitle" 
+                       Text="Состав заказа" 
+                       Style="{StaticResource HeaderText}" 
+                       HorizontalAlignment="Center"/>
+        </Border>
+
+        <!-- Основной контент -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="0,10,0,10">
+            <StackPanel>
+                <!-- Информация о заказе -->
+
+                <!-- Состав заказа -->
+                <Border Style="{StaticResource ItemBorder}" Margin="0,12,0,0">
+                    <StackPanel>
+                        <TextBlock Text="Позиции" Style="{StaticResource HeaderText}" Margin="0,0,0,12"/>
+                        <ListView x:Name="LvOrderItems">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Продукт" Width="300" DisplayMemberBinding="{Binding ProductName}"/>
+                                    <GridViewColumn Header="Количество" Width="100" DisplayMemberBinding="{Binding Quantity}"/>
+                                    <GridViewColumn Header="Цена" Width="120" DisplayMemberBinding="{Binding Price, StringFormat={}{0:N2} ₽}"/>
+                                    <GridViewColumn Header="Сумма" Width="120" DisplayMemberBinding="{Binding Total, StringFormat={}{0:N2} ₽}"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </StackPanel>
+                </Border>
+                <Border Style="{StaticResource ItemBorder}">
+                    <StackPanel>
+                        <TextBlock x:Name="TbOrderInfo" Style="{StaticResource BoldText}"/>
+                        <TextBlock x:Name="TbOrderDate" Style="{StaticResource NormalText}"/>
+                        <TextBlock x:Name="TbOrderStatus" Style="{StaticResource NormalText}"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Итоговая стоимость -->
+        <Border Grid.Row="2" Background="#BBDCFA" Padding="12">
+            <TextBlock x:Name="TbTotalCost" 
+                       Text="Общая стоимость: 0,00 ₽" 
+                       Style="{StaticResource HeaderText}" 
+                       HorizontalAlignment="Center"/>
+        </Border>
+    </Grid>
+</Window>
